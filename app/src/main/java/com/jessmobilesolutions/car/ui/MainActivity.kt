@@ -1,20 +1,18 @@
 package com.jessmobilesolutions.car.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
 import com.jessmobilesolutions.car.R
-import com.jessmobilesolutions.car.data.CarFactory
-import com.jessmobilesolutions.car.ui.adapter.CarAdapter
+import com.jessmobilesolutions.car.ui.adapter.TabsAdapter
 
 class MainActivity : AppCompatActivity() {
-    lateinit var btnCalculator: Button
-    lateinit var recycleView: RecyclerView
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,23 +24,38 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         setupView()
-        setupListeners()
-        setupList()
+        setupTabs()
     }
 
     private fun setupView() {
-        btnCalculator = findViewById(R.id.buttonCalculator)
-        recycleView = findViewById(R.id.recycleViewCars)
+        tabLayout = findViewById(R.id.tableLayout)
+        viewPager = findViewById(R.id.viewPager)
     }
 
-    private fun setupList() {
-        val adapter = CarAdapter(CarFactory.list)
-        recycleView.adapter = adapter
-    }
 
-    private fun setupListeners() {
-        btnCalculator.setOnClickListener() {
-            startActivity(Intent(this, CalculatorActivity::class.java))
-        }
+    private fun setupTabs() {
+        val tabAdapter = TabsAdapter(this)
+        viewPager.adapter = tabAdapter
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.let {
+                    viewPager.currentItem = it.position
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+
+        })
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                tabLayout.getTabAt(position)?.select()
+            }
+        })
     }
 }

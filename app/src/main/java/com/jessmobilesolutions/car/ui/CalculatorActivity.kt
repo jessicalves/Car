@@ -12,11 +12,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.jessmobilesolutions.car.R
 
 class CalculatorActivity : AppCompatActivity() {
-    lateinit var price: EditText
-    lateinit var km: EditText
-    lateinit var btnCalculator: Button
-    lateinit var result: TextView
-    lateinit var closeView: ImageView
+    private lateinit var price: EditText
+    private lateinit var km: EditText
+    private lateinit var btnCalculator: Button
+    private lateinit var result: TextView
+    private lateinit var closeView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +39,7 @@ class CalculatorActivity : AppCompatActivity() {
         closeView = findViewById(R.id.imageViewClose)
     }
 
-    private fun calcular() {
+    private fun calculator() {
         val price = price.text.toString().toFloat()
         val km = km.text.toString().toFloat()
         val cal = price / km
@@ -48,7 +48,7 @@ class CalculatorActivity : AppCompatActivity() {
 
     private fun setupListeners() {
         btnCalculator.setOnClickListener() {
-            calcular()
+            calculator()
         }
         closeView.setOnClickListener() {
             finish()

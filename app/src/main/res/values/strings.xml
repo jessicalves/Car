@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Car</string>
     <string name="eletric_car">Eletric Car</string>
-    <string name="carros">Carros</string>
-    <string name="favoritos">Favoritos</string>
+    <string name="cars">Carros</string>
+    <string name="fav">Favoritos</string>
     <string name="preco">Preço</string>
     <string name="bateria">Bateria</string>
     <string name="potencia">Potencia</string>
@@ -13,4 +13,6 @@
     <!-- Strings used for fragments for navigation -->
     <string name="calcular2">Calcular</string>
     <string name="calculator">Calculator Autonomn</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
