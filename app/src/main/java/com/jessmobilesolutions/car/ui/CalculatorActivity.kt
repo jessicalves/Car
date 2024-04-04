@@ -1,5 +1,6 @@
 package com.jessmobilesolutions.car.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -29,6 +30,12 @@ class CalculatorActivity : AppCompatActivity() {
         }
         setupView()
         setupListeners()
+        cacheResult()
+    }
+
+    fun cacheResult() {
+        val calculatedValue = getSharedPref()
+        result.text = calculatedValue.toString()
     }
 
     private fun setupView() {
@@ -39,19 +46,33 @@ class CalculatorActivity : AppCompatActivity() {
         closeView = findViewById(R.id.imageViewClose)
     }
 
-    private fun calculator() {
+    private fun calculate() {
         val price = price.text.toString().toFloat()
         val km = km.text.toString().toFloat()
         val cal = price / km
         result.text = cal.toString()
+        saveSharedPref(cal)
     }
 
     private fun setupListeners() {
         buttonCalculatorAuto.setOnClickListener() {
-            calculator()
+            calculate()
         }
         closeView.setOnClickListener() {
             finish()
         }
+    }
+
+    private fun saveSharedPref(value: Float) {
+        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
+        with(sharedPref.edit()) {
+            putFloat(getString(R.string.saved_calc), value)
+            apply()
+        }
+    }
+
+    private fun getSharedPref(): Float {
+        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return 0.0f
+        return sharedPref.getFloat(getString(R.string.saved_calc), 0.0f)
     }
 }
