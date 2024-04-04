@@ -14,7 +14,7 @@ import com.jessmobilesolutions.car.R
 class CalculatorActivity : AppCompatActivity() {
     private lateinit var price: EditText
     private lateinit var km: EditText
-    private lateinit var btnCalculator: Button
+    private lateinit var buttonCalculatorAuto: Button
     private lateinit var result: TextView
     private lateinit var closeView: ImageView
 
@@ -35,7 +35,7 @@ class CalculatorActivity : AppCompatActivity() {
         price = findViewById(R.id.editTextPriceKwh)
         km = findViewById(R.id.editTextKmPrecorrido)
         result = findViewById(R.id.textViewResult)
-        btnCalculator = findViewById(R.id.buttonCalculatorAuto)
+        buttonCalculatorAuto = findViewById(R.id.buttonCalculatorAuto)
         closeView = findViewById(R.id.imageViewClose)
     }
 
@@ -47,7 +47,7 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        btnCalculator.setOnClickListener() {
+        buttonCalculatorAuto.setOnClickListener() {
             calculator()
         }
         closeView.setOnClickListener() {
