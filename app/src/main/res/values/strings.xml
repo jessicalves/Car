@@ -1,18 +1,17 @@
 <resources>
     <string name="app_name">Car</string>
     <string name="eletric_car">Eletric Car</string>
-    <string name="cars">Carros</string>
-    <string name="fav">Favoritos</string>
-    <string name="preco">Preço</string>
-    <string name="bateria">Bateria</string>
-    <string name="potencia">Potencia</string>
-    <string name="recarga">Recarga</string>
-    <string name="preco_kwh">Preço kWh</string>
-    <string name="km_percorrido">Km Percorrido</string>
-    <string name="calcular">Calcular</string>
+    <string name="cars">Cars</string>
+    <string name="fav">Favorites</string>
+    <string name="price">Price</string>
+    <string name="battery">Battery</string>
+    <string name="power">Power</string>
+    <string name="recharge_time">Recharge</string>
+    <string name="price_kwh">Price kWh</string>
+    <string name="km_traveled">Km Traveled</string>
+    <string name="calculate">Calculate</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="calcular2">Calcular</string>
-    <string name="calculator">Calculator Autonomn</string>
+    <string name="calculate_autonomy">Calculate Autonomy</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="connection_wifi">No connect wi-fi :(</string>
