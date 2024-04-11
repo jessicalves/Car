@@ -33,7 +33,7 @@ class CalculatorActivity : AppCompatActivity() {
         cacheResult()
     }
 
-    fun cacheResult() {
+    private fun cacheResult() {
         val calculatedValue = getSharedPref()
         result.text = calculatedValue.toString()
     }

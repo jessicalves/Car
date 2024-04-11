@@ -1,5 +1,6 @@
 package com.jessmobilesolutions.car.ui
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -19,6 +20,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.jessmobilesolutions.car.R
 import com.jessmobilesolutions.car.data.CarApi
+import com.jessmobilesolutions.car.data.local.CarRepository
+import com.jessmobilesolutions.car.data.local.CarsContract
+import com.jessmobilesolutions.car.data.local.CarsContract.CarEntry.COLUMN_NAME_BATTERY
+import com.jessmobilesolutions.car.data.local.CarsContract.CarEntry.COLUMN_NAME_PHOTO
+import com.jessmobilesolutions.car.data.local.CarsContract.CarEntry.COLUMN_NAME_POWER
+import com.jessmobilesolutions.car.data.local.CarsContract.CarEntry.COLUMN_NAME_PRICE
+import com.jessmobilesolutions.car.data.local.CarsContract.CarEntry.COLUMN_NAME_TIME
+import com.jessmobilesolutions.car.data.local.CarsContract.CarEntry.TABLE_NAME
+import com.jessmobilesolutions.car.data.local.CarsDbHelper
 import com.jessmobilesolutions.car.domain.Car
 import com.jessmobilesolutions.car.ui.adapter.CarAdapter
 import retrofit2.Call
@@ -116,6 +126,11 @@ class CarFragment : Fragment() {
         recycleView.apply {
             visibility = View.VISIBLE
             adapter = carAdapter
+        }
+
+        carAdapter.carItemLister = {
+            car ->
+            val isSaved = CarRepository(requireContext()).saveIfNotExist(car)
         }
     }
 
